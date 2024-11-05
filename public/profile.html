@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <h1>My Profile</h1>
+
+
+    <!-- Home button -->
+    <a href="/home" id="home-button">🏠 Home</a>
+
+    <!-- Top-right user greeting and logout -->
+    <div class="top-right-corner">
+        <p>Hello, <span id="username-display">User</span></p>
+        <button id="logout-button">Logout</button>
+    </div>
+
+
+
+
+    <!-- Odjeljak za korisničke podatke -->
+    <h2>User Information</h2>
+    <div id="user-info">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" />
+        </div>
+        <button id="save-user-info">Save Changes</button>
+    </div>
+
+    
+    <h2 id="visited-naslov">Visited Countries</h2>
+    <div id="visited-countries-list">
+        <!-- Ovdje će biti popis država koje korisnik posjetio -->
+    </div>
+
+    <!-- Script za dohvaćanje, prikaz, uređivanje i brisanje posjećenih država -->
+    <script>
+
+
+        // Set username in greeting message after fetching user info
+        fetch('/get-user-info')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('username-display').textContent = data.user.username;
+                }
+            })
+            .catch(error => console.error('Error fetching user info:', error));
+
+
+        // Handle logout button click
+        document.getElementById('logout-button').onclick = () => {
+            fetch('/logout', { method: 'POST' })
+                .then(() => {
+                    window.location.href = '/';
+                })
+                .catch(error => console.error('Error logging out:', error));
+        };
+
+
+        // Dohvati korisničke podatke prilikom učitavanja stranice profila
+        fetch('/get-user-info')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const usernameInput = document.getElementById('username');
+                    const emailInput = document.getElementById('email');
+
+                    // Postavljanje vrijednosti input polja na korisničke podatke
+                    usernameInput.value = data.user.username;
+                    emailInput.value = data.user.email;
+                }
+            })
+            .catch(error => console.error('Error fetching user info:', error))
+
+
+
+        // Gumb za spremanje promjena korisničkih podataka
+        document.getElementById('save-user-info').onclick = () => {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+
+            fetch('/update-user-info', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('User information updated successfully!');
+                } else {
+                    alert('Error updating user information.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        };
+
+
+
+        // Dohvati posjećene države prilikom učitavanja stranice profila
+        fetch('/get-visited-countries')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const visitedCountriesList = document.getElementById('visited-countries-list');
+                    visitedCountriesList.innerHTML = '';
+
+                    data.visitedCountries.forEach(country => {
+                        const countryDiv = document.createElement('div');
+                        countryDiv.classList.add('country-item');
+
+                        // Prikaži naziv države
+                        const countryCode = document.createElement('strong');
+                        countryCode.textContent = country.country_code;
+                        countryDiv.appendChild(countryCode);
+
+                        // Prikaz polja za bilješke
+                        const notes = document.createElement('textarea');
+                        notes.value = country.notes || ''; // Ako postoji bilješka, prikaži je
+                        notes.placeholder = 'Add a note...';
+                        notes.classList.add('notes');
+                        countryDiv.appendChild(notes);
+
+                        // Gumb za spremanje bilješke
+                        const saveButton = document.createElement('button');
+                        saveButton.textContent = 'Save';
+                        saveButton.title = 'Save note to database'; // Tooltip text
+                        saveButton.onclick = () => {
+                            fetch('/update-country-note', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    countryCode: country.country_code,
+                                    notes: notes.value
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert('Note saved successfully!');
+                                } else {
+                                    alert('Error saving note.');
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                        };
+                        countryDiv.appendChild(saveButton);
+
+                        // Gumb za brisanje države iz popisa
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.classList.add('delete-button');
+                        deleteButton.title = 'Delete country from database'; // Tooltip text
+                        deleteButton.onclick = () => {
+                            fetch('/delete-visited-country', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    countryCode: country.country_code
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert('Country deleted successfully!');
+                                    countryDiv.remove(); // Ukloni element iz prikaza
+                                } else {
+                                    alert('Error deleting country.');
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                        };
+                        countryDiv.appendChild(deleteButton);
+
+                        // Dodaj element države u glavni popis
+                        visitedCountriesList.appendChild(countryDiv);
+                    });
+                }
+            })
+            .catch(error => console.error('Error fetching visited countries:', error));
+
+
+
+
+    </script>
+</body>
+</html>

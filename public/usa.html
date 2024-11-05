@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa SAD-a</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <link href="europa.css" rel="stylesheet"> <!-- Povezivanje CSS datoteke, povezi europa.css jer je isto -->
+
+    <link href='https://cdn.jsdelivr.net/npm/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css' rel='stylesheet' /> <!--za geocoder to dodaj u ostale kontinente-->
+    <script src='https://cdn.jsdelivr.net/npm/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.min.js'></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> <!--za png slike-->
+
+    <script src="CCapture.all.min.js"></script> <!--valjda za gif-->    
+
+
+</head>
+<body>
+
+
+
+<div id="map"></div>
+
+
+
+
+
+
+
+<button id="home-button" onclick="window.location.href='/home'">🏠 Home</button>
+
+<!-- Kontrole -->
+<div class="menu">
+    <select id="style-select">
+        <option id="zadana-vrijednost" value="mapbox://styles/mapbox/light-v10">Light</option>
+        <option value="mapbox://styles/mapbox/dark-v10">Dark</option>
+        <option value="mapbox://styles/mapbox/streets-v11">Streets</option>
+        <option value="mapbox://styles/mapbox/outdoors-v11">Outdoors</option>
+        <option value="mapbox://styles/mapbox/satellite-v9">Satellite</option>
+        <option value="mapbox://styles/mapbox/traffic-night-v2">Traffic Night</option>
+        <option value="mapbox://styles/mapbox/traffic-day-v2">Traffic Day</option>
+        <option value="mapbox://styles/mapbox/navigation-preview-day-v4">Navigation Preview Day</option>
+        <option value="mapbox://styles/mapbox/navigation-preview-night-v4">Navigation Preview Night</option>
+        <option value="mapbox://styles/mapbox/satellite-streets-v12">Satellite + Streets</option>
+        <option value="mapbox://styles/mapbox/basic-v9">Basic</option>
+        <option value="mapbox://styles/mapbox/streets-v11?optimize=true">Streets (Optimized)</option>
+        <option value="mapbox://styles/mapbox/navigation-day-v1">Navigation Day</option>
+        <option value="mapbox://styles/mapbox/navigation-night-v1">Navigation Night</option>
+    </select>  
+</div>
+
+
+
+<button id="profile-button"  onclick="window.location.href='/profile'">My Profile</button>
+
+<button id="logout-button"  onclick="window.location.href='/logout'">🔒 Logout</button>
+
+
+<!-- Dodaj ovaj gumb ispod postojećeg "Clear" gumba -->
+<button id="save-to-db">Spremi u bazu</button>
+
+
+<!-- Settings Menu -->
+<div class="settings-container">
+    <button id="settings-toggle" class="settings-toggle">⚙️ Postavke</button>
+    <div id="settings-menu" class="settings-menu" style="display: none;">
+        <label>
+            <input type="checkbox" id="show-borders" checked> Podebljaj granice
+        </label>
+        <label>
+            <input type="checkbox" id="show-countries" checked> Prikaži države
+        </label> 
+        <label>
+            <input type="checkbox" id="show-counties" checked> Prikaži pokrajine
+        </label>
+        <label>
+            <input type="checkbox" id="show-cities" checked> Prikaži gradove
+        </label>
+        <label>
+            <input type="checkbox" id="show-names" checked> Prikaži imena država
+        </label>
+        <label>
+            <input type="checkbox" id="show-water" checked> Prikaži rijeke, jezera i mora
+        </label>
+        <label>
+            <input type="checkbox" id="show-sea-names" checked> Prikaži imena mora
+        </label>
+        <label>
+            <input type="checkbox" id="show-mountains" checked> Prikaži planine
+        </label>
+        <label>
+            <input type="checkbox" id="show-roads" checked> Prikaži ceste (stil Navigation) <!--i ovo dodati-->
+        </label>
+        <label>
+            <input type="checkbox" id="enable-hover-info" checked> Prikaži informacije o državi na hover <!--ovo dodati u ostale kontinente-->
+        </label>
+        <label>
+            <input type="checkbox" id="enable-capital-markers"> Označi glavne gradove <!--i ovo didati-->
+        </label>
+        <button id="export-gif">Exportaj kao video</button>
+        <button id="export-png">Exportaj kao sliku</button>        
+    </div>
+</div>
+
+
+<style>
+ 
+</style>
+
+<script>
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+<div class="country-picker">
+    <div class="add-section">
+        <h4>Select a country</h4>
+        <div class="select-container">
+            <div class="dropdown">
+                <button id="dropdown-toggle" class="dropdown-toggle">Select a country</button>
+                <div id="country-list" class="dropdown-menu" style="display: none;">
+                    <input type="text" id="country-search" placeholder="Search country" />
+                    <div id="country-options"></div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="visited-section">
+        <h4>Visited countries (<span id="visited-count">0</span>)</h4>
+        <select id="visited-select" class="select-menu" multiple>
+            
+        </select>
+        <button id="clear-visited">Clear</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0/dist/html2canvas.min.js"></script>
+<script src="usa.js" defer></script>
+</body>
+</html>

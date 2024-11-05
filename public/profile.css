@@ -1,0 +1,341 @@
+
+/*
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+#user-info, #visited-countries-list {
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#user-info div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.country-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.country-item strong {
+    flex-basis: 20%; 
+    flex-grow: 1;
+    color: #333;
+}
+
+.notes {
+    flex-basis: 70%; 
+    flex-grow: 2;
+    margin-right: 10px;
+}
+
+
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+
+.top-right-corner {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+}
+
+.top-right-corner p {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+#logout-button {
+    background-color: #6c757d;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+#logout-button:hover {
+    background-color: #5a6268;
+}
+
+
+#home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+#home-button:hover {
+    background-color: #0056b3;
+}
+*/
+
+
+
+
+
+
+/* profile.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-block;
+    padding: 6px 10px; 
+    font-size: 0.9em; 
+    text-decoration: none;
+    color: #fff;
+    background-color: #28a745; 
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#home-button:hover {
+    background-color: #218838;
+}
+
+.top-right-corner {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red background color */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+#logout-button {
+    background-color: #ff4d4f;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#logout-button:hover {
+    background-color: #d93636;
+}
+
+#user-info, #visited-countries-list {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#visited-naslov {
+    margin-top: 20px;
+}
+
+#user-info div {
+    margin-bottom: 10px;
+}
+
+#user-info label {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+#user-info input[type="text"], 
+#user-info input[type="email"] {
+    width: calc(100% - 120px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+    font-size: 16px;
+}
+
+#user-info input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#save-user-info {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#save-user-info:hover {
+    background-color: #218838;
+}
+
+.country-item {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.country-item strong {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #555;
+    width: 80px;
+}
+
+.notes {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    margin-right: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.notes:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.country-item button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.country-item button:hover {
+    background-color: #0056b3;
+}
+
+
+
+@media (max-width: 600px) {
+    #user-info div, .country-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #user-info label, #user-info input[type="text"], #user-info input[type="email"], .notes {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+}

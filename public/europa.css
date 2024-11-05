@@ -1,0 +1,352 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.menu {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    font-size: 14px;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+
+    margin-top: 40px;
+}
+
+.menu select {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+.settings-container {
+    position: fixed;
+    top: 56px;
+    right: 45px;
+}
+
+.settings-toggle {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.settings-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1;
+    width: 200px;
+}
+
+.settings-menu label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.settings-menu button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.select-menu {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: white;
+}
+
+.country-picker {
+    position: fixed;
+    bottom: 560px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    width: 200px;
+    z-index: 1;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.visited-section {
+    margin-top: 20px;
+}
+
+#visited-select {
+    height: 100px; /* Set a fixed height */
+    overflow-y: auto; /* Allow scrolling if options exceed the height */
+}
+
+button#clear-visited {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-toggle {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-menu {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 5px;
+    padding: 10px;
+    z-index: 1;
+}
+
+.country-option {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.country-option img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.country-option input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Popup styling */
+#country-info-popup {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 220px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    display: none;
+}
+
+/* Header section */
+.popup-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.popup-flag {
+    width: 30px;
+    height: 20px;
+    margin-right: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Content section */
+.popup-content p {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+
+
+/* Popup positioning */
+#country-info-popup::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+}
+
+
+
+
+
+
+
+
+
+.marker {
+    background-image: url('https://img.icons8.com/ios-filled/50/000000/marker.png'); /* URL ikone lokacije */
+    background-size: contain;
+    width: 30px; /* Prilagodite veličinu */
+    height: 30px; /* Prilagodite veličinu */
+    border-radius: 50%;
+    cursor: pointer; /* Dodajte kursor pointer za indikaciju */
+}
+
+
+
+
+
+
+
+.popup-content {
+    background-color: #007bff;
+    color: white; /* White text */
+    padding: 10px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    max-width: 200px; /* Adjust as necessary */
+}
+
+.popup-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.popup-time, .popup-temperature, .popup-description {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.popup-icon {
+    width: 70px; /* Set appropriate size for the weather icon */
+    height: auto;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+#home-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+
+#profile-button {
+    position: absolute;
+    top: 10px;
+    left: 92px;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+
+
+#logout-button {
+    position: absolute;
+    top: 56px;
+    right: 145px;
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+
+#save-to-db {
+    position: absolute;
+    bottom: 520px;
+    left: 10px;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1;
+}

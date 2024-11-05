@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    background-color: black;
+    background-image: url('globus.gif');
+    
+    /* Postavljamo veličinu pozadinske slike */
+    background-size: 40%; /* Smanji sliku na 40% širine containera */
+
+    /* Postavljamo sliku u centar */
+    background-position: center;
+    
+    /* Ako želiš da se slika ne ponavlja */
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.overlay {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 8px;
+    color: #fff;
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+h1 span:first-child {
+    color: #E1B12C; /* Gold color for 'visited' */
+}
+
+h1 span:last-child {
+    color: #E1B12C; /* Gold color for '.com' */
+}
+
+.selection-container {
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #E1B12C;
+    border: none;
+    border-radius: 4px;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d4a31a;
+}
+
+p {
+    font-size: 14px;
+    margin-top: 20px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+.button-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1;
+}
+
+.logout-button {
+    padding: 10px;
+    background-color: #e1b12c;
+    color: #2c3e50;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.logout-button:hover {
+    background-color: #d4a31a;
+}
+
+
+
+
+
+
+
+
+
+
+/* Stilizacija za gumb "Moj profil" u gornjem lijevom kutu */
+.profile-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1;
+}
+
+.profile-button {
+    padding: 10px;
+    background-color: #e1b12c;
+    color: #2c3e50;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-button:hover {
+    background-color: #d4a31a;
+}
+
+/* Stilizacija za poruku dobrodošlice pored gumba za odjavu */
+.welcome-message {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h1>Prijava</h1>
+        <form id="loginForm" action="/login" method="POST">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Lozinka</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Prijavi se</button>
+            <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
+        </form>
+        <p>Nemate račun? <a href="/register">Registrirajte se</a></p>
+    </div>
+
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            const formData = new FormData(this);
+            const data = {
+                email: formData.get('email'),
+                password: formData.get('password')
+            };
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    localStorage.setItem('username', result.username); //probaj napravit da se ne moze registrirat sa 2 ista usernamea zbog ovog dolje, ali sad ne treba jer necu to radit
+
+                    // Redirect to the home page if login is successful
+                    window.location.href = '/home';
+
+                    
+                } else {
+                    // Display error message
+                    document.getElementById('errorMessage').textContent = result.message;
+                }
+            } catch (error) {
+                document.getElementById('errorMessage').textContent = 'Error logging in';
+            }
+
+        });
+        
+
+       
+
+
+    </script>
+</body>
+</html>
