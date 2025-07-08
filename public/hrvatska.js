@@ -155,6 +155,7 @@ function getCapitalName(county) {
 }
 
 
+
 const capitalOffsets = {
     'Grad Zagreb': 1,
     'Zagrebačka': 1,
@@ -172,7 +173,8 @@ const capitalOffsets = {
     'Zadarska': 1,
     'Šibensko-Kninska': 1,
     'Splitsko-Dalmatinska': 1,
-    'Dubrovačko-Neretvanska': 1
+    'Dubrovačko-Neretvanska': 1,
+    'Sisačko-Moslavačka': 1
 };
 
     
