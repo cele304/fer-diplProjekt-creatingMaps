@@ -54,7 +54,8 @@ const europeCountries = [
     'Zadarska',
     'Šibensko-Kninska',
     'Splitsko-Dalmatinska',
-    'Dubrovačko-Neretvanska'
+    'Dubrovačko-Neretvanska',
+    'Sisačko-Moslavačka'
 ];
     
     
@@ -76,7 +77,8 @@ const countries = [
     { name: 'Zadarska', code: 'HR-ZA' },
     { name: 'Šibensko-Kninska', code: 'HR-SK' },
     { name: 'Splitsko-Dalmatinska', code: 'HR-SD' },
-    { name: 'Dubrovačko-Neretvanska', code: 'HR-DN' }
+    { name: 'Dubrovačko-Neretvanska', code: 'HR-DN' },
+    { name: 'Sisačko-Moslavačka', code: 'HR-SK'}
 ];
     
     
@@ -98,7 +100,8 @@ const extendedCountryInfo = {
     'Zadarska': { capital: 'Zadar', population: '160,340', area: '3,646 km²', flag: '' },
     'Šibensko-Kninska': { capital: 'Šibenik', population: '98,213', area: '2,984 km²', flag: '' },
     'Splitsko-Dalmatinska': { capital: 'Split', population: '425,412', area: '4,524 km²', flag: '' },
-    'Dubrovačko-Neretvanska': { capital: 'Dubrovnik', population: '115,862', area: '1,782 km²', flag: '' }
+    'Dubrovačko-Neretvanska': { capital: 'Dubrovnik', population: '115,862', area: '1,782 km²', flag: '' },
+    'Sisačko-Moslavačka': {capital: 'Sisak', population: '140 549', area: '4 468 km²', flag: ''}
 };
 
 
@@ -122,7 +125,8 @@ const capitalCoordinates = {
     'Zadarska': { lng: 15.2314, lat: 44.1194 }, // Zadar
     'Šibensko-Kninska': { lng: 15.895, lat: 43.734 }, // Šibenik
     'Splitsko-Dalmatinska': { lng: 16.4402, lat: 43.5081 }, // Split
-    'Dubrovačko-Neretvanska': { lng: 18.0944, lat: 42.6507 } // Dubrovnik
+    'Dubrovačko-Neretvanska': { lng: 18.0944, lat: 42.6507 }, // Dubrovnik
+    'Sisačko-Moslavačka': {lng: 16.36, lat: 45.48} //Sisak
 };
 
 
@@ -144,7 +148,8 @@ function getCapitalName(county) {
         'Zadarska': 'Zadar',
         'Šibensko-Kninska': 'Šibenik',
         'Splitsko-Dalmatinska': 'Split',
-        'Dubrovačko-Neretvanska': 'Dubrovnik'
+        'Dubrovačko-Neretvanska': 'Dubrovnik',
+        'Sisačko-Moslavačka': 'Sisak'
     };
     return capitalNames[county] || 'N/A';
 }
